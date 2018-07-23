@@ -35,7 +35,7 @@ if (isset($_GET['remove'])) {
     if ($_SESSION['house_' . $_GET['remove']] < 1) {
         
         unset($_SESSION['property_total']);
-        unset($_SESSION['property_units']);
+        unset($_SESSION['quantity']);
 
         redirect("checkout.php");
 
@@ -52,7 +52,7 @@ if (isset($_GET['delete'])) {
     $_SESSION['house_' . $_GET['delete']] = '0';
 
     unset($_SESSION['property_total']);
-    unset($_SESSION['property_units']);
+    unset($_SESSION['quantity']);
 
     redirect("checkout.php");
 
@@ -62,7 +62,13 @@ if (isset($_GET['delete'])) {
 function cart(){
 
     $total = 0;
-    $property_units = 0;
+    $quantity = 0;
+
+    //PayPal variables
+    $item_name = 1;
+    $item_number = 1;
+    $amount = 1;
+    $quantity = 1;
 
    foreach ($_SESSION as $name => $value) {
 
@@ -81,7 +87,7 @@ function cart(){
 
         $sub = $row['house_price']*$value;
         $reservation = $row['house_reservation_fee']*$value;
-        $property_units +=$value;
+        $quantity +=$value;
 
         $houses = <<<DELIMETER
 
@@ -95,22 +101,47 @@ function cart(){
                     <a class='btn btn-danger' href="cart.php?delete={$row['house_id']}"><span class='glyphicon glyphicon-remove'></span></a>
                 </td>
                 
-              
             </tr>
+
+              <input type="hidden" name="item_name_{$item_name}" value="{$row['house_title']}">
+              <input type="hidden" name="item_number_{$item_number}" value="{$row['house_id']}">
+              <input type="hidden" name="amount_{$amount}" value="{$row['house_reservation_fee']}">
+              <input type="hidden" name="quantity_{$amount}" value="{$value}">
 DELIMETER;
 
 echo $houses;
 
+//Incrementing the values
+    $item_name++;
+    $item_number++;
+    $amount++;
+    $quantity++;
+
                  }
 
                  $_SESSION['property_total'] = $total += $reservation;
-                 $_SESSION['property_units'] +=$value;
+                 $_SESSION['quantity'] +=$value;
             
             }
          }
 
     }
+function show_paypal() {
 
+    if (isset($_SESSION['quantity'])) {
+       
+    $paypal_button = <<<DELIMETER
+
+        <input type="image" name="upload"
+    src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+    alt="PayPal - The safer, easier way to pay online">
+
+DELIMETER;
+
+    return $paypal_button;
+    }
+
+}
  
 }
 
