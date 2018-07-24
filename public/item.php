@@ -45,7 +45,7 @@ while ($row = fetch_array($query)):
    
     <form action="">
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" href="cart.php?add={$row['house_id']}" value="CHECK OUT">
+           <a href="cart.php?add=<?php echo $row['house_id']; ?>" class="btn btn-primary">Reserve Now</a>
         </div>
     </form>
 

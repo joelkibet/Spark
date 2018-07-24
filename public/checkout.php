@@ -62,7 +62,7 @@ if (isset($_SESSION['house_1'])) {
 </span></td>
 </tr>
 <tr class="shipping">
-<th>Property and Handling</th>
+<th>Property Status</th>
 <td>Not Reserved</td>
 </tr>
 

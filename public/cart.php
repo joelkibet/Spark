@@ -128,7 +128,7 @@ echo $houses;
     }
 function show_paypal() {
 
-    if (isset($_SESSION['quantity'])) {
+    if (isset($_SESSION['quantity']) && $_SESSION['quantity'] >=1) {
        
     $paypal_button = <<<DELIMETER
 
