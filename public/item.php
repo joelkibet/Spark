@@ -45,7 +45,7 @@ while ($row = fetch_array($query)):
    
     <form action="">
         <div class="form-group">
-           <a href="cart.php?add=<?php echo $row['house_id']; ?>" class="btn btn-primary">Reserve Now</a>
+           <a href="../resources/cart.php?add=<?php echo $row['house_id']; ?>" class="btn btn-primary">Reserve Now</a>
         </div>
     </form>
 

@@ -7,19 +7,19 @@ if (isset($_GET['add'])) {
     $query = query("SELECT * FROM houses WHERE house_id=" . escape_string($_GET['add']). " ");
     confirm($query); // Ensure no error in the query sent.
 
-    // Pulling the info fro the table(houses/properties)
+    // Pulling the info from the table(houses/properties)
     while ($row =  fetch_array($query)) {
 
         // Display only the property quantity in the db.
         if ($row['quantity'] != $_SESSION['house_' . $_GET['add']]) {
             
             $_SESSION['house_' . $_GET['add']] +=1;
-            redirect("checkout.php");
+            redirect("../public/checkout.php");
 
         } else {
 
             set_message("We only have " . $row['quantity'] . " " ."{$row['house_title']}". " available");
-            redirect("checkout.php");
+            redirect("../public/checkout.php");
         }
     }
 
@@ -37,11 +37,11 @@ if (isset($_GET['remove'])) {
         unset($_SESSION['property_total']);
         unset($_SESSION['quantity']);
 
-        redirect("checkout.php");
+        redirect("../public/checkout.php");
 
     } else {
         
-        redirect("checkout.php");
+        redirect("../public/checkout.php");
     }
     
 
@@ -54,7 +54,7 @@ if (isset($_GET['delete'])) {
     unset($_SESSION['property_total']);
     unset($_SESSION['quantity']);
 
-    redirect("checkout.php");
+    redirect("../public/checkout.php");
 
 
 }
@@ -96,9 +96,9 @@ function cart(){
                 <td>{$reservation}</td>
                 <td>{$value}</td>
                 <td>{$sub}</td>
-                <td><a class='btn btn-warning' href="cart.php?remove={$row['house_id']}"><span class='glyphicon glyphicon-minus'></span></a>             
-                    <a class='btn btn-success' href="cart.php?add={$row['house_id']}"><span class='glyphicon glyphicon-plus'></span></a>
-                    <a class='btn btn-danger' href="cart.php?delete={$row['house_id']}"><span class='glyphicon glyphicon-remove'></span></a>
+                <td><a class='btn btn-warning' href="../resources/cart.php?remove={$row['house_id']}"><span class='glyphicon glyphicon-minus'></span></a>             
+                    <a class='btn btn-success' href="../resources/cart.php?add={$row['house_id']}"><span class='glyphicon glyphicon-plus'></span></a>
+                    <a class='btn btn-danger' href="../resources/cart.php?delete={$row['house_id']}"><span class='glyphicon glyphicon-remove'></span></a>
                 </td>
                 
             </tr>

@@ -80,7 +80,7 @@ $houses = <<<DELIMETER
             <h4><a href="item.php?id={$row['house_id']}">{$row['house_title']}</a>
             </h4>
             <p>Visit our site and find your dream home from vast range of available properties.</p>
-             <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['house_id']}">Reserve Here</a>
+             <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['house_id']}">Reserve Here</a>
         </div>
         
 
@@ -220,6 +220,9 @@ function login_user(){
 			redirect("login.php");
 		}else{
 
+			// Set a session to allow the user to log in.
+			$_SESSION['username'] = $username;
+			//set_message("Welcome to Admin {$username}");
 			redirect("admin");
 		}
 
