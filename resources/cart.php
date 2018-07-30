@@ -1,4 +1,4 @@
-<?php require_once("../resources/config.php");?>
+<?php require_once("config.php");?>
 
 <?php
 
@@ -126,6 +126,8 @@ echo $houses;
          }
 
     }
+}
+
 function show_paypal() {
 
     if (isset($_SESSION['quantity']) && $_SESSION['quantity'] >=1) {
@@ -143,7 +145,48 @@ DELIMETER;
 
 }
  
-}
 
+function reports(){
+
+    $total = 0;
+    $quantity = 0;
+
+   
+   foreach ($_SESSION as $name => $value) {
+
+    if ($value > 0) {
+         
+        // Getting the product id using subtr.(Extracting the id from the session.)
+        if (substr($name, 0, 6) == "house_") {
+
+        $length = strlen($name);
+        $id = substr($name, 6 , $length);
+            
+        $query = query("SELECT * FROM houses WHERE house_id = " . escape_string($id). " ");
+        confirm($query);
+
+        while ($row = fetch_array($query)) {
+        $house_price = $row['house_price'];
+        $sub = $row['house_price']*$value;
+        $reservation_fee = $row['house_reservation_fee']; 
+        $reservation = $row['house_reservation_fee']*$value;
+        $quantity +=$value;
+
+
+$insert_report = query("INSERT INTO reports (house_id, reservation_amount, quantity) VALUES ('{$id}','{$reservation}','{$value}')");
+confirm($insert_report);
+    
+
+
+                 }
+
+$total += $reservation; 
+echo $quantity;
+            
+            }
+         }
+
+    }
+}
 
 ?>

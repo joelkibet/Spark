@@ -1,6 +1,4 @@
 <?php require_once("../resources/config.php");?>
-<?php require_once("cart.php");?>
-
 <?php include(TEMPLATE_FRONT .DS. "header.php");?>
 
 <?php
@@ -17,7 +15,9 @@
       VALUES('{$amount}','{$currency}','{$transaction}','{$status}')");
 
     confirm($query);
-    session_destroy();
+    
+    reports();
+    //session_destroy();
 
   } else {
     
