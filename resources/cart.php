@@ -148,6 +148,13 @@ DELIMETER;
 
 function reports(){
 
+  if (isset($_GET['tx'])) {
+    // Performing a check for params from paypal.
+    $amount = $_GET['amt'];
+    $currency = $_GET['cc'];
+    $transaction = $_GET['tx'];
+    $status = $_GET['st'];
+
     $total = 0;
     $quantity = 0;
 
@@ -161,19 +168,27 @@ function reports(){
 
         $length = strlen($name);
         $id = substr($name, 6 , $length);
+
+            // Creating a query and inserting the info in the database table = reservation.
+        $reservation = query("INSERT INTO reservation (reservation_amount, reservation_transaction, reservation_status, reservation_currency)
+          VALUES('{$amount}','{$currency}','{$transaction}','{$status}')");
+        // Getting house id
+        $last_id = last_id();
+        confirm($reservation);
             
         $query = query("SELECT * FROM houses WHERE house_id = " . escape_string($id). " ");
         confirm($query);
 
         while ($row = fetch_array($query)) {
         $house_price = $row['house_price'];
+        $house_title = $row['house_title'];
         $sub = $row['house_price']*$value;
         $reservation_fee = $row['house_reservation_fee']; 
         $reservation = $row['house_reservation_fee']*$value;
         $quantity +=$value;
 
 
-$insert_report = query("INSERT INTO reports (house_id, reservation_amount, quantity) VALUES ('{$id}','{$reservation}','{$value}')");
+$insert_report = query("INSERT INTO reports (house_id, reservation_id, house_title, reservation_amount, quantity) VALUES ('{$id}','{$last_id}','{$house_title}','{$reservation}','{$value}')");
 confirm($insert_report);
     
 
@@ -187,6 +202,15 @@ echo $quantity;
          }
 
     }
+
+session_destroy();
+   
+   } else {
+    
+    redirect("index.php");
+
+  }
+
 }
 
 ?>
