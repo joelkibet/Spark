@@ -146,7 +146,7 @@ DELIMETER;
 }
  
 
-function reports(){
+function process_transaction(){
 
   if (isset($_GET['tx'])) {
     // Performing a check for params from paypal.
@@ -171,7 +171,7 @@ function reports(){
 
             // Creating a query and inserting the info in the database table = reservation.
         $reservation = query("INSERT INTO reservation (reservation_amount, reservation_transaction, reservation_status, reservation_currency)
-          VALUES('{$amount}','{$currency}','{$transaction}','{$status}')");
+          VALUES('{$amount}','{$transaction}','{$status}','{$currency}')");
         // Getting house id
         $last_id = last_id();
         confirm($reservation);

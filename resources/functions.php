@@ -262,6 +262,32 @@ function send_message(){
 }
 /****************BACK END FUNCTIONS********************/
 
+function display_reservations(){
+
+	$query = query("SELECT * FROM reservation");
+	confirm($query);
+
+	while ($row = fetch_array($query)) {
+
+		//Create a deleimeter do display the info below
+		$reservation = <<<DELIMETER
+
+		<tr>
+			<td>{$row['reservation_id']}</td>
+			<td>{$row['reservation_amount']}</td>
+			<td>{$row['reservation_transaction']}</td>
+			<td>{$row['reservation_currency']}</td>
+			<td>{$row['reservation_status']}</td>
+			<td><a class="btn btn-danger" href="../../resources/templates/back/delete_reservation.php?id={$row['reservation_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+		</tr>
+
+
+DELIMETER;
+
+echo $reservation;	
+
+	}
+}
 
 
 ?>
