@@ -289,5 +289,40 @@ echo $reservation;
 	}
 }
 
+/**************** PROPERTIES IN ADMIM********************/
+
+function get_property_in_admin(){
+
+$query = query("SELECT * FROM houses");
+confirm($query);
+
+while ($row = fetch_array($query)) {
+	
+$houses = <<<DELIMETER
+
+<tr>
+    <td>{$row['house_id']}</td>
+    <td>{$row['house_title']}<br><a href="index.php?edit_property&id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a></td>
+    <td>{$row['house_price']}</td>
+    <td>{$row['quantity']}</td>
+    <td><a class="btn btn-danger" href="../../resources/templates/back/delete_property.php?id={$row['house_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+</tr>
+
+DELIMETER;
+
+echo $houses;
+}
+
+}
+
+/**************** ADDING PROPERTIES IN ADMIM********************/
+
+function add_property(){
+
+	if (isset($_POST['publish'])) {
+		# code...
+		echo "IT WORKS!";
+	}
+}
 
 ?>

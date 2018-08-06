@@ -1,8 +1,11 @@
+
+
 <div class="col-md-12">
 
 <div class="row">
 <h1 class="page-header">
-   Add Property
+   Edit property
+
 </h1>
 </div>
                
@@ -95,7 +98,7 @@
 
     <!-- Product Image -->
     <div class="form-group">
-        <label for="product-title">Property Image</label>
+        <label for="product-title">Product Image</label>
         <input type="file" name="file">
       
     </div>
@@ -107,3 +110,12 @@
 
     
 </form>
+
+
+
+                
+
+
+
+            </div>
+            <!-- /.container-fluid -->
