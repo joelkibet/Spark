@@ -12,7 +12,7 @@
     <div class="list-group">
 
     	<?php
-    		get_categories();
+    		get_location();
     	?>
         
     </div>
