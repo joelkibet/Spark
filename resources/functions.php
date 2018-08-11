@@ -131,7 +131,7 @@ while ($row = fetch_array($query)){
 			
 $location_links = <<<DELIMETER
 
-<a href='category.php?id={$row['cat_id']}'class='list-group-item'>{$row['cat_title']}</a>
+<a href='location.php?id={$row['location_id']}'class='list-group-item'>{$row['location_title']}</a>
 
 DELIMETER;
 
@@ -142,9 +142,42 @@ echo $location_links;
 
 }
 
+// Function to get houses from cats table in the db.
 function get_houses_in_cats(){
 
 $query = query("SELECT * FROM houses WHERE house_category_id = " . escape_string($_GET['id']). " ");
+confirm($query);
+
+while ($row = fetch_array($query)) {
+	
+$houses = <<<DELIMETER
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <a href= "item.php?id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a>
+        <div class="caption">
+            <h4 class="pull-right">Ksh {$row['house_price']}</h4>
+            <h4><a href="item.php?id={$row['house_id']}">{$row['house_title']}</a>
+            </h4>
+            <p>Choose a plan, buy or rent</p>
+             <a class="btn btn-primary" target="_blank" href="item.php?id={$row['house_id']}">See details</a>
+        </div>
+        
+
+    </div>
+</div>
+
+DELIMETER;
+
+echo $houses;
+}
+
+}
+
+// Function to get houses from location table in the db.
+function get_houses_in_location(){
+
+$query = query("SELECT * FROM houses WHERE house_location_id = " . escape_string($_GET['id']). " ");
 confirm($query);
 
 while ($row = fetch_array($query)) {
@@ -297,6 +330,8 @@ $query = query("SELECT * FROM houses");
 confirm($query);
 
 while ($row = fetch_array($query)) {
+
+$category = display_house_category_title($row['house_category_id']);
 	
 $houses = <<<DELIMETER
 
@@ -304,6 +339,8 @@ $houses = <<<DELIMETER
     <td>{$row['house_id']}</td>
     <td>{$row['house_title']}<br><a href="index.php?edit_property&id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a></td>
     <td>{$row['house_price']}</td>
+    <td>{$category}</td>
+    <td>{$row['house_location_id']}</td>
     <td>{$row['quantity']}</td>
     <td><a class="btn btn-danger" href="../../resources/templates/back/delete_property.php?id={$row['house_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
 </tr>
@@ -315,14 +352,93 @@ echo $houses;
 
 }
 
+/**************** DISPLAYING CATEGORY TITLE IN ADMIM********************/
+
+function display_house_category_title($house_category_id){
+
+	$category_query = query("SELECT * FROM  categories WHERE cat_id = '{house_category_id}' ");
+	confirm($category_query);
+
+	while ($category_row = fetch_array($category_query)) {
+		
+		return $category_row['cat_title'];
+	}
+}
+
+
+
 /**************** ADDING PROPERTIES IN ADMIM********************/
 
 function add_property(){
 
 	if (isset($_POST['publish'])) {
 		# code...
-		echo "IT WORKS!";
-	}
+		$house_title = escape_string($_POST['house_title']);
+		$house_category_id = escape_string($_POST['house_category_id']);
+		$house_location_id = escape_string($_POST['house_location_id']);
+		$house_price = escape_string($_POST['house_price']);
+		$house_reservation_fee = escape_string($_POST['house_reservation_fee']);
+		$quantity = escape_string($_POST['quantity']);
+		$house_description = escape_string($_POST['house_description']);
+		$short_desc = escape_string($_POST['short_desc']);
+		$house_image = escape_string($_FILES['house_image']['name']);
+		$image_temp_location = escape_string($_FILES['house_image']['tmp_name']);
+
+		//Moving the uploaded files
+		move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $house_image);
+
+		$query = query("INSERT INTO houses(house_title, house_category_id, house_location_id, house_price, house_reservation_fee, quantity, house_description, short_desc, house_image) VALUES('{$house_title}','{$house_category_id}','{$house_location_id}','{$house_price}','{$house_reservation_fee}','{$quantity}','{$house_description}','{$short_desc}','{$house_image}') ");
+
+		$last_id = last_id();
+		confirm($query);
+		set_message("New Property {$last_id} successfully added.");
+		redirect("index.php?property");
+
+
+
+			}
+}
+
+/**************** FUNCTION TO GET LOCATION FROM DB********************/
+
+function get_location_in_admin(){
+
+$query = query("SELECT * FROM location");
+confirm($query);
+
+while ($row = fetch_array($query)){
+			
+$location_options = <<<DELIMETER
+
+ <option value="{$row['location_id']}">{$row['location_title']}</option>
+
+DELIMETER;
+
+echo $location_options;
+
+}
+ 
+
+}
+
+function show_categories_add_page(){
+
+$query = query("SELECT * FROM categories");
+confirm($query);
+
+while ($row = fetch_array($query)){
+			
+$category_options = <<<DELIMETER
+
+ <option value="{$row['cat_id']}">{$row['cat_title']}</option>
+
+DELIMETER;
+
+echo $category_options;
+
+}
+ 
+
 }
 
 ?>

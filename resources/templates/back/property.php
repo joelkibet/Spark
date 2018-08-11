@@ -18,6 +18,8 @@
       <tr>
            <th>House Id</th>
            <th>Title</th>
+           <th>Category</th>
+           <th>Location</th>
            <th>Price</th>
            <th>Units</th>
       </tr>
@@ -28,24 +30,10 @@
   </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
                 
-                 
+      </div>
 
-
-             </div>
-
-            </div>
+  </div>
             <!-- /.container-fluid -->
-
-        </div>
+ </div>
         <!-- /#page-wrapper -->

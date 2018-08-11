@@ -1,5 +1,3 @@
-
-
 <div class="col-md-12">
 
 <div class="row">
@@ -9,8 +7,6 @@
 </h1>
 </div>
                
-
-
 <form action="" method="post" enctype="multipart/form-data">
 
 
@@ -37,12 +33,6 @@
         <input type="number" name="product_price" class="form-control" size="60">
       </div>
     </div>
-
-
-
-
-    
-    
 
 </div><!--Main Content-->
 
@@ -72,13 +62,6 @@
 
 </div>
 
-
-
-
-
-    <!-- Product Brands-->
-
-
     <div class="form-group">
       <label for="product-title">Product Location</label>
          <select name="product_brand" id="" class="form-control">
@@ -106,16 +89,8 @@
 
 
 </aside><!--SIDEBAR-->
-
-
     
 </form>
 
-
-
-                
-
-
-
-            </div>
+ </div>
             <!-- /.container-fluid -->

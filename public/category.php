@@ -5,7 +5,7 @@
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Jumbotron Header -->
+        <!-- Header -->
         <header class="jumbotron hero-spacer">
             <h1>A Warm Welcome!</h1>
             <p>PataKeja is an online platform that helps here to locate your dream home and enabling you reserve it as you await to rent or purchase the property.</p>

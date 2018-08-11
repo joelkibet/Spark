@@ -64,7 +64,7 @@ if (!isset($_SESSION['username'])) {
                     }
 
 
-                    echo $_SERVER['REQUEST_URI'];
+                   // echo $_SERVER['REQUEST_URI'];
                 ?>
             </div>
             <!-- /.container-fluid -->

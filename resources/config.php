@@ -1,6 +1,6 @@
 <?php
 
-//ob_start(); // Turn on output bufferring
+ob_start(); // Turn on output bufferring
 session_start();
 //session_destroy();
 
@@ -10,6 +10,7 @@ defined("DS") ? null : define("DS", DIRECTORY_SEPARATOR);
 // defining template paths
 defined("TEMPLATE_FRONT") ? null : define("TEMPLATE_FRONT", __DIR__ .DS. "templates/front");
 defined("TEMPLATE_BACK") ? null : define("TEMPLATE_BACK", __DIR__ .DS. "templates/back");
+defined("UPLOAD_DIRECTORY") ? null : define("UPLOAD_DIRECTORY", __DIR__ .DS. "uploads");
 
 // Defining database constants/info
 defined("DB_HOST") ? null : define("DB_HOST", "localhost");

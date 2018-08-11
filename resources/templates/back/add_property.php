@@ -5,9 +5,7 @@
    Add Property
 </h1>
 </div>
-               
-
-
+        <?php add_property(); ?>       
 <form action="" method="post" enctype="multipart/form-data">
 
 
@@ -15,31 +13,36 @@
 
 <div class="form-group">
     <label for="product-title">Property Title </label>
-        <input type="text" name="product_title" class="form-control">
+        <input type="text" name="house_title" class="form-control">
        
     </div>
 
 
     <div class="form-group">
            <label for="product-title">Property Description</label>
-      <textarea name="product_description" id="" cols="30" rows="10" class="form-control"></textarea>
+      <textarea name="house_description" id="" cols="30" rows="10" class="form-control"></textarea>
     </div>
-
-
 
     <div class="form-group row">
 
       <div class="col-xs-3">
         <label for="product-price">Property Price</label>
-        <input type="number" name="product_price" class="form-control" size="60">
+        <input type="number" name="house_price" class="form-control" size="60">
       </div>
     </div>
 
+    <div class="form-group row">
 
+      <div class="col-xs-3">
+        <label for="product-price">Reservation Fee</label>
+        <input type="number" name="house_reservation_fee" class="form-control" size="60">
+      </div>
+    </div>
 
-
-    
-    
+     <div class="form-group">
+           <label for="product-title">Short Description</label>
+      <textarea name="short_desc" id="" cols="30" rows="2" class="form-control"></textarea>
+    </div>
 
 </div><!--Main Content-->
 
@@ -49,61 +52,56 @@
 
 <aside id="admin_sidebar" class="col-md-4">
 
-     
-     <div class="form-group">
-       <input type="submit" name="draft" class="btn btn-warning btn-lg" value="Draft">
-        <input type="submit" name="publish" class="btn btn-primary btn-lg" value="Publish">
-    </div>
-
-
-     <!-- Product Categories-->
+     <!-- Property Categories-->
 
     <div class="form-group">
          <label for="product-title">Property Category</label>
-          <hr>
-        <select name="product_category" id="" class="form-control">
+        <select name="house_category_id" id="" class="form-control">
             <option value="">Select Category</option>
-           
+
+            <?php show_categories_add_page(); ?>
+
         </select>
 
 
 </div>
 
-
-
-
-
-    <!-- Product Brands-->
-
+   <!-- Property Units-->
 
     <div class="form-group">
-      <label for="product-title">Product Location</label>
-         <select name="product_brand" id="" class="form-control">
+         <label for="product-title">Property Units</label>
+         <input type="number" class="form-control" name="quantity">
+
+    </div>
+
+    <div class="form-group">
+      <label for="product-title">Property Location</label>
+         <select name="house_location_id" id="" class="form-control">
             <option value="">Select Location</option>
+
+            <?php
+
+              get_location_in_admin();
+
+
+              ?>
+           
          </select>
     </div>
 
-
-<!-- Product Tags -->
-
-
-    <div class="form-group">
-          <label for="product-title">Property Keywords</label>
-          <hr>
-        <input type="text" name="product_tags" class="form-control">
-    </div>
-
-    <!-- Product Image -->
+    <!-- Property Image -->
     <div class="form-group">
         <label for="product-title">Property Image</label>
-        <input type="file" name="file">
+        <input type="file" name="house_image">
       
     </div>
 
+     <div class="form-group">
+        <input type="submit" name="publish" class="btn btn-primary btn-lg" value="Publish">
+    </div>
 
 
-</aside><!--SIDEBAR-->
-
-
-    
+</aside>
+<!--SIDEBAR-->
+   
 </form>
