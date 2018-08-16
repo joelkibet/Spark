@@ -1,3 +1,4 @@
+<?php add_property(); ?>
 <div class="col-md-12">
 
 <div class="row">
@@ -5,7 +6,7 @@
    Add Property
 </h1>
 </div>
-        <?php add_property(); ?>       
+               
 <form action="" method="post" enctype="multipart/form-data">
 
 

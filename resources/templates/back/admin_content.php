@@ -8,18 +8,18 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-xs-3">
-                    <i class="fa fa-shopping-cart fa-5x"></i>
+                    <i class="fa fa-home fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">124</div>
-                    <div>New Reservations!</div>
+                    <div class="huge">Reservations!</div>
+                    <div></div>
                 </div>
             </div>
         </div>
         <a href="#">
             <div class="panel-footer">
                 <span class="pull-left">View Details</span>
-                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                <span class="pull-right"><i class="fa fa-home-right"></i></span>
                 <div class="clearfix"></div>
             </div>
         </a>
@@ -32,11 +32,11 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-xs-3">
-                    <i class="fa fa-support fa-5x"></i>
+                    <i class="fa fa-home fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">13</div>
-                    <div>Products!</div>
+                    <div class="huge">Properties!</div>
+                    <div></div>
                 </div>
             </div>
         </div>
@@ -55,11 +55,11 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-xs-3">
-                    <i class="fa fa-tasks fa-5x"></i>
+                    <i class="fa fa-home fa-5x"></i>
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">12</div>
-                    <div>Categories!</div>
+                    <div class="huge">Categories!</div>
+                    <div></div>
                 </div>
             </div>
         </div>
@@ -92,61 +92,13 @@
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>Order #</th>
-                            <th>Order Date</th>
-                            <th>Order Time</th>
+                            <th>Reservation #</th>
+                            <th>Reservation Date</th>
+                            <th>Reservation Time</th>
                             <th>Amount (USD)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>3326</td>
-                            <td>10/21/2013</td>
-                            <td>3:29 PM</td>
-                            <td>$321.33</td>
-                        </tr>
-                        <tr>
-                            <td>3325</td>
-                            <td>10/21/2013</td>
-                            <td>3:20 PM</td>
-                            <td>$234.34</td>
-                        </tr>
-                        <tr>
-                            <td>3324</td>
-                            <td>10/21/2013</td>
-                            <td>3:03 PM</td>
-                            <td>$724.17</td>
-                        </tr>
-                        <tr>
-                            <td>3323</td>
-                            <td>10/21/2013</td>
-                            <td>3:00 PM</td>
-                            <td>$23.71</td>
-                        </tr>
-                        <tr>
-                            <td>3322</td>
-                            <td>10/21/2013</td>
-                            <td>2:49 PM</td>
-                            <td>$8345.23</td>
-                        </tr>
-                        <tr>
-                            <td>3321</td>
-                            <td>10/21/2013</td>
-                            <td>2:23 PM</td>
-                            <td>$245.12</td>
-                        </tr>
-                        <tr>
-                            <td>3320</td>
-                            <td>10/21/2013</td>
-                            <td>2:15 PM</td>
-                            <td>$5663.54</td>
-                        </tr>
-                        <tr>
-                            <td>3319</td>
-                            <td>10/21/2013</td>
-                            <td>2:13 PM</td>
-                            <td>$943.45</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -173,61 +125,14 @@
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
                         <tr>
-                            <th>Order #</th>
-                            <th>Order Date</th>
-                            <th>Order Time</th>
+                            <th>Reservation #</th>
+                            <th>Reservation Date</th>
+                            <th>Reservation Time</th>
                             <th>Amount (USD)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>3326</td>
-                            <td>10/21/2013</td>
-                            <td>3:29 PM</td>
-                            <td>$321.33</td>
-                        </tr>
-                        <tr>
-                            <td>3325</td>
-                            <td>10/21/2013</td>
-                            <td>3:20 PM</td>
-                            <td>$234.34</td>
-                        </tr>
-                        <tr>
-                            <td>3324</td>
-                            <td>10/21/2013</td>
-                            <td>3:03 PM</td>
-                            <td>$724.17</td>
-                        </tr>
-                        <tr>
-                            <td>3323</td>
-                            <td>10/21/2013</td>
-                            <td>3:00 PM</td>
-                            <td>$23.71</td>
-                        </tr>
-                        <tr>
-                            <td>3322</td>
-                            <td>10/21/2013</td>
-                            <td>2:49 PM</td>
-                            <td>$8345.23</td>
-                        </tr>
-                        <tr>
-                            <td>3321</td>
-                            <td>10/21/2013</td>
-                            <td>2:23 PM</td>
-                            <td>$245.12</td>
-                        </tr>
-                        <tr>
-                            <td>3320</td>
-                            <td>10/21/2013</td>
-                            <td>2:15 PM</td>
-                            <td>$5663.54</td>
-                        </tr>
-                        <tr>
-                            <td>3319</td>
-                            <td>10/21/2013</td>
-                            <td>2:13 PM</td>
-                            <td>$943.45</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>

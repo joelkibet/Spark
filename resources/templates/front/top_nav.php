@@ -16,10 +16,10 @@
                         <a href="explore.php">Explore</a>
                     </li>
                     <li>
-                        <a href="login.php">Login</a>
+                        <a href="login.php"></a>
                     </li>
                     <li>
-                        <a href="admin">Admin</a>
+                        <a href="admin"></a>
                     </li>
                      <li>
                         <a href="checkout.php">Checkout</a>

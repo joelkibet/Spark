@@ -6,6 +6,7 @@
         <span class="icon-bar"></span>
     </button>
     <a class="navbar-brand" href="index.php">Admin Joel</a>
+    <a class="navbar-brand" href="../index.php">Home</a>
 </div>
 
   

@@ -1,5 +1,5 @@
 <?php
-
+$uploads = "uploads";
 //Helper functions
 function last_id(){
 
@@ -322,6 +322,14 @@ echo $reservation;
 	}
 }
 
+
+/**************** FUNCTION TO DISPLAY IMAGE********************/
+function dispaly_image($picture){
+	global $uploads;
+
+	return $uploads . DS . $picture; 
+}
+
 /**************** PROPERTIES IN ADMIM********************/
 
 function get_property_in_admin(){
@@ -332,15 +340,16 @@ confirm($query);
 while ($row = fetch_array($query)) {
 
 $category = display_house_category_title($row['house_category_id']);
+$location = display_house_location_title($row['house_location_id']);
 	
 $houses = <<<DELIMETER
 
 <tr>
     <td>{$row['house_id']}</td>
     <td>{$row['house_title']}<br><a href="index.php?edit_property&id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a></td>
-    <td>{$row['house_price']}</td>
     <td>{$category}</td>
-    <td>{$row['house_location_id']}</td>
+    <td>{$location}</td>
+    <td>{$row['house_price']}</td>
     <td>{$row['quantity']}</td>
     <td><a class="btn btn-danger" href="../../resources/templates/back/delete_property.php?id={$row['house_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
 </tr>
@@ -365,6 +374,19 @@ function display_house_category_title($house_category_id){
 	}
 }
 
+/**************** DISPLAYING LOCATION TITLE IN ADMIM********************/
+
+function display_house_location_title($house_location_id){
+
+	$location_query = query("SELECT * FROM  location WHERE location_id = '{house_house_id}' ");
+	confirm($location_query);
+
+	while ($location_row = fetch_array($location_query)) {
+		
+		return $location_row['location_title'];
+	}
+}
+
 
 
 /**************** ADDING PROPERTIES IN ADMIM********************/
@@ -373,6 +395,8 @@ function add_property(){
 
 	if (isset($_POST['publish'])) {
 		# code...
+		$target = "../../uploads/";
+
 		$house_title = escape_string($_POST['house_title']);
 		$house_category_id = escape_string($_POST['house_category_id']);
 		$house_location_id = escape_string($_POST['house_location_id']);
@@ -382,10 +406,12 @@ function add_property(){
 		$house_description = escape_string($_POST['house_description']);
 		$short_desc = escape_string($_POST['short_desc']);
 		$house_image = escape_string($_FILES['house_image']['name']);
-		$image_temp_location = escape_string($_FILES['house_image']['tmp_name']);
+		$image_temp_location = escape_string($_FILES['house_image']['tpm_name']);
 
-		//Moving the uploaded files
 		move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $house_image);
+
+
+		
 
 		$query = query("INSERT INTO houses(house_title, house_category_id, house_location_id, house_price, house_reservation_fee, quantity, house_description, short_desc, house_image) VALUES('{$house_title}','{$house_category_id}','{$house_location_id}','{$house_price}','{$house_reservation_fee}','{$quantity}','{$house_description}','{$short_desc}','{$house_image}') ");
 
@@ -439,6 +465,51 @@ echo $category_options;
 }
  
 
+}
+
+/**************** EDITTING PROPERTIES IN ADMIM********************/
+
+function edit_property(){
+
+	if (isset($_POST['publish'])) {
+		# code...
+		$target = "../../uploads/";
+
+		$house_title = escape_string($_POST['house_title']);
+		$house_category_id = escape_string($_POST['house_category_id']);
+		$house_location_id = escape_string($_POST['house_location_id']);
+		$house_price = escape_string($_POST['house_price']);
+		$house_reservation_fee = escape_string($_POST['house_reservation_fee']);
+		$quantity = escape_string($_POST['quantity']);
+		$house_description = escape_string($_POST['house_description']);
+		$short_desc = escape_string($_POST['short_desc']);
+		$house_image = escape_string($_FILES['house_image']['name']);
+		$image_temp_location = escape_string($_FILES['house_image']['tpm_name']);
+
+		move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $house_image);
+
+		$query = "UPDATE houses SET ";
+		$query .= "house_title = '{$house_title}', ";
+		$query .= "house_category_id = '{$house_category_id}', ";
+		$query .= "house_location_id = '{$house_location_id}', ";
+		$query .= "house_price = '{$house_price}', ";
+		$query .= "house_reservation_fee = '{$house_reservation_fee}', ";
+		$query .= "quantity = '{$quantity}', ";
+		$query .= "house_description = '{$house_description}', ";
+		$query .= "short_desc = '{$short_desc}', ";
+		$query .= "house_image  = '{$house_image} ' ";
+		$query .= "WHERE house_id" . escape_string($GET['id']);
+
+
+
+
+		confirm($query);
+		set_message("Property successfully updated.");
+		redirect("index.php?property");
+
+
+
+			}
 }
 
 ?>
