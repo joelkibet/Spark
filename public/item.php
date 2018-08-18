@@ -84,7 +84,7 @@ while ($row = fetch_array($query)):
   <div class="col-md-6">
 
        <h3>Property Location using Google map. </h3>
-
+       <h3><?php echo $row['house_location'];?></h3>
 
     </div>
 

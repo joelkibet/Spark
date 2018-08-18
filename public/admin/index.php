@@ -58,6 +58,11 @@ if (!isset($_SESSION['username'])) {
                         include(TEMPLATE_BACK . "/categories.php");
                     }
 
+                    if (isset($_GET['users'])) {
+                        # code...
+                        include(TEMPLATE_BACK . "/users.php");
+                    }
+
 
                    // echo $_SERVER['REQUEST_URI'];
                 ?>

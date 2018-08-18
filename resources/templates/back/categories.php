@@ -1,4 +1,4 @@
-
+<?php add_category(); ?>
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -19,12 +19,12 @@
     
         <div class="form-group">
             <label for="category-title">Title</label>
-            <input type="text" class="form-control">
+            <input name="cat_title" type="text" class="form-control">
         </div>
 
         <div class="form-group">
             
-            <input type="submit" class="btn btn-primary" value="Add Category">
+            <input name="add_category" type="submit" class="btn btn-primary" value="Add Category">
         </div>      
 
 
@@ -42,15 +42,13 @@
         <tr>
             <th>id</th>
             <th>Title</th>
+            <th>Delete Cat</th>
         </tr>
             </thead>
 
 
     <tbody>
-        <tr>
-            <td>20</td>
-            <td>Bedsitter</td>
-        </tr>
+        <?php display_cats_in_admin(); ?>
     </tbody>
 
         </table>

@@ -511,5 +511,77 @@ function edit_property(){
 
 			}
 }
+/**************** CATEGORIES IN ADMIM********************/
+function display_cats_in_admin(){
+
+	$category_query = query("SELECT * FROM categories");
+	confirm($category_query);
+
+	while ($row = fetch_array($category_query)) {
+		# code...
+		$cat_id = $row['cat_id'];
+		$cat_title = $row['cat_title'];
+
+		$category = <<<DELIMETER
+
+        <tr>
+            <td>{$cat_id}</td>
+            <td>{$cat_title}</td>
+            <td><a href = "../../resources/templates/back/delete_category.php?id={$row['cat_id']}">Delete</a></td>
+        </tr>
+
+DELIMETER;
+
+echo $category;
+
+		
+	}
+}
+
+function add_category(){
+
+	if (isset($_POST['add_category'])) {
+		# code...
+		$cat_title = escape_string($_POST['cat_title']);
+
+		$insert_cat = query("INSERT INTO categories (cat_title) VALUES('{$cat_title}') ");
+		confirm($insert_cat);
+		redirect("index.php?categories");
+	}
+}
+
+/****************ADMIN USERS ********************/
+
+function display_users(){
+	$user_query = query("SELECT * FROM users");
+	confirm($user_query);
+
+	while ($row = fetch_array($user_query)) {
+		# code...
+		$user_id = $row['user_id'];
+		$username = $row['username'];
+		$email = $row['email'];
+		$password= $row['password'];
+
+		$user = <<<DELIMETER
+
+        <tr>
+            <td>{$user_id}</td>
+            <td>{$username}</td>
+            <td>{$email}</td>
+            <td><a href = "../../resources/templates/back/delete_user.php?id={$row['user_id']}">Delete</a></td>
+        </tr>
+
+DELIMETER;
+
+echo $user;
+
+		
+	}
+
+}
+
+
+
 
 ?>

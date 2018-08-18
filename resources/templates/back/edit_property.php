@@ -1,4 +1,28 @@
-<?php edit_property(); ?>
+<?php
+
+
+if (isset($_GET['id'])) {
+  # code...
+  $query = query("SELECT * FROM houses WHERE house_id = " . escape_string($_GET['id']). " ");
+  confirm($query);
+
+  while ($row = fetch_array($query)) {
+    # code...
+    $house_title = escape_string($row['house_title']);
+    $house_category_id = escape_string($row['house_category_id']);
+    $house_location_id = escape_string($row['house_location_id']);
+    $house_price = escape_string($row['house_price']);
+    $house_reservation_fee = escape_string($row['house_reservation_fee']);
+    $quantity = escape_string($row['quantity']);
+    $house_description = escape_string($row['house_description']);
+    $short_desc = escape_string($row['short_desc']);
+    $house_image = escape_string($row['house_image']);
+  }
+
+  edit_property(); 
+}
+
+?>
 <div class="col-md-12">
 
 <div class="row">
@@ -13,14 +37,14 @@
 
 <div class="form-group">
     <label for="product-title">Property Title </label>
-        <input type="text" name="house_title" class="form-control">
+        <input type="text" name="house_title" class="form-control" value="<?php //echo $house_title; ?>">
        
     </div>
 
 
     <div class="form-group">
            <label for="product-title">Property Description</label>
-      <textarea name="house_description" id="" cols="30" rows="10" class="form-control"></textarea>
+      <textarea name="house_description" id="" cols="30" rows="10" class="form-control"><?php // echo $house_description;?></textarea>
     </div>
 
     <div class="form-group row">
