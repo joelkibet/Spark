@@ -582,6 +582,30 @@ echo $user;
 }
 
 
+/**************** FUNCTION TO GET REPORTS.********************/
+
+function get_reports(){
+
+$query = query("SELECT * FROM reports");
+confirm($query);
+
+while ($row = fetch_array($query)) {
+	
+$houses = <<<DELIMETER
+
+<tr>
+    <td>{$row['report_id']}</td>
+    <td>{$row['reservation_id']}</td>
+    <td>{$row['house_title']}</td>
+    <td>{$row['reservation_amount']}</td>
+    <td><a href = "../../resources/templates/back/delete_report.php?id={$row['report_id']}">Delete</a></td></tr>
+
+DELIMETER;
+
+echo $houses;
+}
+
+}
 
 
 ?>

@@ -6,15 +6,18 @@
         <li class="">
             <a href="index.php?reservations"><i class="fa fa-fw fa-home"></i>Reservations</a>
         </li>
-        <li>
-            <a href="index.php?property"><i class="fa fa-fw fa-bar-chart-o"></i> View Properties</a>
+        <li class="">
+            <a href="index.php?reports"><i class="fa fa-fw fa-home"></i>Reports</a>
         </li>
         <li>
-            <a href="index.php?add_property"><i class="fa fa-fw fa-table"></i> Add Property</a>
+            <a href="index.php?property"><i class="fa fa-fw fa-home"></i> View Properties</a>
+        </li>
+        <li>
+            <a href="index.php?add_property"><i class="fa fa-fw fa-home"></i> Add Property</a>
         </li>
         
         <li>
-            <a href="index.php?categories"><i class="fa fa-fw fa-desktop"></i> Categories</a>
+            <a href="index.php?categories"><i class="fa fa-fw fa-home"></i> Categories</a>
         </li>
         <li>
             <a href="index.php?users"><i class="fa fa-fw fa-wrench"></i>Users</a>
