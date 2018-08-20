@@ -15,17 +15,20 @@
                     <li>
                         <a href="explore.php">Explore</a>
                     </li>
-                    <li>
-                        <a href="login.php"></a>
-                    </li>
-                    <li>
-                        <a href="admin"></a>
-                    </li>
                      <li>
                         <a href="checkout.php">Checkout</a>
                     </li>
                     <li>
                         <a href="contact.php">Contact</a>
+                    </li>
+                    <li>
+                        <a href="account.php">Account</a>
+                    </li>
+                    <li>
+                        <a href="about_us.php">About Us</a>
+                    </li>
+                    <li>
+                        <a href="admin"></a>
                     </li>
 
                 </ul>

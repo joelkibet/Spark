@@ -239,6 +239,66 @@ echo $houses;
 
 }
 
+// Function to signup the client.
+function client_signup(){
+	if (isset($_POST['submit'])) {
+		
+		$first = escape_string($_POST['first']);
+		$last  = escape_string($_POST['last']);
+		$phone = escape_string($_POST['phone']);
+		$email = escape_string($_POST['email']);
+		$uid   = escape_string($_POST['uid']);
+		$pwd   = escape_string($_POST['pwd']);
+
+		// Error handlers
+		$query = query("SELECT * FROM clients WHERE uid='$uid' ");
+		confirm($query);
+
+		if (mysqli_num_rows($query) > 0) {
+			# code...
+			//set_message("Username already taken. Try another one.");
+			//set_message("{$uid} already taken. Chose another one");
+			redirect("signup.php");
+		}else{
+
+			$query = query("INSERT INTO clients(first, last, phone, email, uid, pwd) VALUES ('$first','$last','$phone','$email','$uid','$pwd')");
+				confirm($query);
+				set_message("{$uid} successfully signed up.");
+		        redirect("index.php");
+		}
+
+	}else{
+
+		//redirect("signup.php");
+		exit();
+	}
+
+
+}
+
+// Function to login client
+function client_login(){
+	if (isset($_POST['submit'])) {
+		# code...
+		$uid = escape_string($_POST['uid']);
+		$pwd = escape_string($_POST['pwd']);
+
+		// Error handlers.
+		$query = query("SELECT * FROM clients WHERE uid = '$uid' AND pwd = '$pwd' ");
+		confirm($query);
+
+		if (mysqli_num_rows($query) == 0 ) {
+			# code...
+			echo "Your Password or username is wrong!";
+		}else{
+			//$_SESSION['uid'] = $uid;
+			redirect("index.php");
+		}
+
+
+		}
+	
+}
 // Function to login the user
 
 function login_user(){
@@ -255,7 +315,7 @@ function login_user(){
 		if (mysqli_num_rows($query) == 0 ) {
 
 			set_message("Your Password or Username is wrong!!");
-			redirect("login.php");
+			//redirect("login.php");
 		}else{
 
 			// Set a session to allow the user to log in.
