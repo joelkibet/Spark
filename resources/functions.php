@@ -81,10 +81,10 @@ $houses = <<<DELIMETER
     <div class="thumbnail">
         <a href= "item.php?id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a>
         <div class="caption">
-            <h4 class="pull-right">Ksh {$row['house_price']}</h4>
+            <h4 class="pull-right">&#36 {$row['house_price']}</h4>
             <h4><a href="item.php?id={$row['house_id']}">{$row['house_title']}</a>
             </h4>
-            <p>Visit our site and find your dream home from vast range of available properties.</p>
+            <p>{$row['house_description']}</p>
              <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['house_id']}">Reserve Here</a>
         </div>
         
@@ -156,10 +156,10 @@ $houses = <<<DELIMETER
     <div class="thumbnail">
         <a href= "item.php?id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a>
         <div class="caption">
-            <h4 class="pull-right">Ksh {$row['house_price']}</h4>
+            <h4 class="pull-right">&#36 {$row['house_price']}</h4>
             <h4><a href="item.php?id={$row['house_id']}">{$row['house_title']}</a>
             </h4>
-            <p>Choose a plan, buy or rent</p>
+            <p>{$row['house_description']}</p>
              <a class="btn btn-primary" target="_blank" href="item.php?id={$row['house_id']}">See details</a>
         </div>
         
@@ -188,10 +188,10 @@ $houses = <<<DELIMETER
     <div class="thumbnail">
         <a href= "item.php?id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a>
         <div class="caption">
-            <h4 class="pull-right">Ksh {$row['house_price']}</h4>
+            <h4 class="pull-right">&#36 {$row['house_price']}</h4>
             <h4><a href="item.php?id={$row['house_id']}">{$row['house_title']}</a>
             </h4>
-            <p>Choose a plan, buy or rent</p>
+            <p>{$row['house_description']}</p>
              <a class="btn btn-primary" target="_blank" href="item.php?id={$row['house_id']}">See details</a>
         </div>
         
@@ -367,10 +367,10 @@ function display_reservations(){
 
 		<tr>
 			<td>{$row['reservation_id']}</td>
-			<td>{$row['reservation_amount']}</td>
-			<td>{$row['reservation_transaction']}</td>
-			<td>{$row['reservation_currency']}</td>
-			<td>{$row['reservation_status']}</td>
+			<td>{$row['property_title']}</td>
+			<td>{$row['reservation_fee']}</td>
+			<td>{$row['property_units']}</td>
+			<td>{$row['property_rent']}</td>
 			<td><a class="btn btn-danger" href="../../resources/templates/back/delete_reservation.php?id={$row['reservation_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
 		</tr>
 

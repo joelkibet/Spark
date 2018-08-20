@@ -85,9 +85,15 @@ function cart(){
 
         while ($row = fetch_array($query)) {
 
+        $title = $row['house_title'];
         $sub = $row['house_price']*$value;
         $reservation = $row['house_reservation_fee']*$value;
         $quantity +=$value;
+
+        $insert_reservation = query("INSERT INTO reservation (property_title, reservation_fee, property_units, property_rent) VALUES('$title','$reservation','$quantity','$sub')");
+        confirm($insert_reservation);
+
+
 
         $houses = <<<DELIMETER
 
@@ -144,6 +150,10 @@ DELIMETER;
     }
 
 }
+function reservation(){
+    
+}
+
  
 
 function process_transaction(){

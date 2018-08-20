@@ -13,10 +13,10 @@
 
       <tr>
            <th>id</th>
-           <th>Amount</th>
-           <th>Transaction</th>
-           <th>Currency</th>
-           <th>Status</th>
+           <th>Property Title</th>
+           <th>Reservation fee</th>
+           <th>Units</th>
+           <th>Monthly Rent</th>
       </tr>
     </thead>
     <tbody>
