@@ -5,7 +5,7 @@
 	<div class="main-wrapper">
 		<h2>Welcome to PataKeja</h2>
 		<h3></h3>
-		<h4 class="bg-success text-center"><?php display_message(); ?></h4>
+		<h4 class="bg-success text-center"><?php //display_message(); ?></h4>
 		<form class="signup-form" action="" method="POST">
 				
 

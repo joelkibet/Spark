@@ -1,3 +1,7 @@
+<?php
+ require_once("../resources/config.php");
+ //session_start();
+ ?>
 <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -31,6 +35,31 @@
                         <a href="admin"></a>
                     </li>
 
+                </ul>
+                <ul class="nav navbar-right top-nav">
+                  <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $_SESSION['username'];?> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                           
+                            <li class="divider"></li>
+                            <li>
+                                <a href="customer/customer_login.php"><i class="fa fa-fw fa-power-on"></i>Create Account</a>
+                            </li>
+                            <li>
+                                <form action="index.php" method="POST">
+                                    <a href="index.php"><input type="button" name="logout" value="Log Out"></a>
+                                </form>
+                                <?php
+                                      if(isset($_POST['logout']))
+                                      {
+                                        session_destroy();
+                                        header('location:index.php');
+                                      }
+                                ?>
+                               <!-- <a href="client_logout.php"><i class="fa fa-fw fa-power-off"></i> Sign Out</a> -->
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

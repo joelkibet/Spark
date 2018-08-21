@@ -21,7 +21,7 @@
             <p>9. You reservation is now being processed.</p>
             <p>10. You will be contacted as soon as possible.</p>
             <p>11. Thank you for using our services.</p>
-            <p><a href="about_us.php">Back</a></p>
+            <p><a href="about_us.php">Back</a></p><p><a href="client.php">Account</a></p>
             </p>
             <p>Contact us Through.</p>
             <p>info@patakeja.co.ke</p>

@@ -221,10 +221,10 @@ $houses = <<<DELIMETER
     <div class="thumbnail">
         <a href= "item.php?id={$row['house_id']}"><img src="{$row['house_image']}" alt=""></a>
         <div class="caption">
-            <h4 class="pull-right">Ksh {$row['house_price']}</h4>
+            <h4 class="pull-right">&#36 {$row['house_price']}</h4>
             <h4><a href="item.php?id={$row['house_id']}">{$row['house_title']}</a>
             </h4>
-            <p>Check out our latest properties.</p>
+            <p>{$row['house_description']}</p>
              <a class="btn btn-primary" target="_blank" href="item.php?id={$row['house_id']}">Reserve Here</a>
         </div>
         
@@ -256,14 +256,14 @@ function client_signup(){
 
 		if (mysqli_num_rows($query) > 0) {
 			# code...
-			//set_message("Username already taken. Try another one.");
+			echo "Username already taken!!!. Try another one.";
 			//set_message("{$uid} already taken. Chose another one");
 			redirect("signup.php");
 		}else{
 
 			$query = query("INSERT INTO clients(first, last, phone, email, uid, pwd) VALUES ('$first','$last','$phone','$email','$uid','$pwd')");
 				confirm($query);
-				set_message("{$uid} successfully signed up.");
+				//set_message("{$uid} successfully signed up.");
 		        redirect("index.php");
 		}
 
@@ -291,13 +291,35 @@ function client_login(){
 			# code...
 			echo "Your Password or username is wrong!";
 		}else{
-			//$_SESSION['uid'] = $uid;
+
+			$_SESSION['client_id'] = $client_id;
+			$_SESSION['first']     = $first;
+			$_SESSION['last']      = $last;
+			$_SESSION['phone']     = $phone;
+			$_SESSION['email']     = $email;
+			$_SESSION['uid']       = $uid;
 			redirect("index.php");
 		}
 
 
 		}
 	
+}
+
+// Function to get client.
+function get_client(){
+	$query = query("SELECT client_id, uid FROM clients WHERE client_id={$_SESSION['client_id']}");
+	confirm($query);
+
+while ($row = fetch_array($query)) {
+	
+$client = <<<DELIMETER
+
+
+DELIMETER;
+
+echo $client;
+}
 }
 // Function to login the user
 
@@ -320,7 +342,7 @@ function login_user(){
 
 			// Set a session to allow the user to log in.
 			$_SESSION['username'] = $username;
-			//set_message("Welcome to Admin {$username}");
+			set_message("Welcome to Admin {$username}");
 			redirect("admin");
 		}
 
